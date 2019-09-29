@@ -1,0 +1,16 @@
+package newTours_WebPage;
+
+  
+public class LoginPage  
+{
+	//Object Repository (Info and Functionality of Elements only )
+	//Not sent any keys r data in it....
+	
+	
+	//<a href="mercurysignon.php">SIGN-ON</a>
+	
+	//Identification of Element
+	
+	//@FindBy(linktText)
+
+}

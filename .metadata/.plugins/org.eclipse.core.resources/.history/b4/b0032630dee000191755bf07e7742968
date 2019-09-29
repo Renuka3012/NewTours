@@ -1,0 +1,58 @@
+package newTours_WebPage;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class LoginPage  
+{
+	//Object Repository (Info and Functionality of Elements only )
+	//Not sent any keys r data in it....
+	
+	
+	//<a href="mercurysignon.php">SIGN-ON</a>
+	
+	//Identification of Element
+	
+	//@FindBy(linktText)
+	
+	@FindBy(linkText="SIGN-ON")
+	WebElement signOn;
+	
+	//Performing the operation of a element
+	
+	
+	public void SignOn()
+	{
+		signOn.click();
+		
+	
+	}
+	
+	
+	//New User Registration
+	
+	@FindBy(name)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

@@ -1,0 +1,141 @@
+package orangehrm_assignments;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class dropdown {
+
+	public static void main(String[] args) throws IOException
+	{
+		WebDriver driver=null;
+		String url="http://demo.guru99.com/test/newtours/register.php";
+		System.setProperty("webdriver.chrome.driver", "./DriverFiles/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get(url);
+		
+		//Maximizing the Browser 
+		
+				driver.manage().window().maximize();
+				
+				//Implicit wait 
+				
+				driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+				
+				
+				
+				//name="country"
+				 FileInputStream file = new FileInputStream("C:\\Users\\siva\\Desktop\\Software Testing\\Selenium\\T.Renuka\\RenuProject\\src\\OrangeHRM_Details\\Newtours_CountryNames.xlsx"); 
+				 // its throws declaration (File Not Found Exception)
+				 
+				 XSSFWorkbook workbook = new XSSFWorkbook(file);
+				 //its again throws declartion (File Not Found Exception) changes to IO Exception
+				 
+				 XSSFSheet sheet = workbook.getSheet("sheet2");	
+
+				
+				
+			WebElement	country=driver.findElement(By.name("country"));
+			
+	List<WebElement> country_Elements	=	country.findElements(By.tagName("option"));
+		int country_count=country_Elements.size();
+		
+		 
+		System.out.println(country_count);
+		
+		
+	 
+		 		
+		
+		
+		
+		
+		
+		
+	 
+		for(int i=0;i<country_count;i++)
+		{
+			String countryElementName = country_Elements.get(i).getText();
+			
+			for(int a=0;a<=country_count;a++)
+			{
+				Row  row=sheet.createRow(a);
+				{
+					for(int b=0;b<=country_count;b++)
+					{
+						Cell cell=row.createCell(b);
+						cell.setCellValue(countryElementName);
+						System.out.println(i +" " +countryElementName);
+						 
+					}
+					System.out.println();
+				}
+			}
+			FileOutputStream file3=new FileOutputStream("C:\\Users\\siva\\Desktop\\Software Testing\\Selenium\\T.Renuka\\RenuProject\\src\\OrangeHRM_Details\\Newtours_CountryNames.xlsx");
+			workbook.write(file3);
+			
+			
+		
+			
+			
+			
+		}
+		
+	
+			
+			
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*	
+		
+		//creating a row in the sheet 
+		  
+		Row  row2=sheet.createRow(0);
+		
+		//creating a cell in the row created
+		Cell cell2=row2.createCell(0);
+		
+		cell2.setAsActiveCell();
+		cell2.setCellValue("country_Elements");
+		
+		
+
+		
+		
+		*/
+		
+		
+		
+		
+		
+		
+		
+		driver.quit();
+		
+		
+		
+	}
+
+}

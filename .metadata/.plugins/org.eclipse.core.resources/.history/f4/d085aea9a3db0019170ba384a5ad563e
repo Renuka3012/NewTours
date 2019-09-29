@@ -1,0 +1,89 @@
+package orangehrm_assignments;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.pagefactory.ByAll;
+
+import multiScreenShot.MultiScreenShot;
+
+public class Newtour_Screenshot {
+
+	public static void main(String[] args) throws IOException, InterruptedException
+	{
+		MultiScreenShot mShot=new MultiScreenShot("./Webdrivers/Screenshots","TestMultiScreenShot");
+		
+		WebDriver driver=null;
+		String url="http://www.newtours.demoaut.com/";
+		System.setProperty("webdriver.chrome.driver", "./DriverFiles/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get(url);
+		
+		//Maximizing the Browser 
+		
+		driver.manage().window().maximize();
+		
+		//Implicit wait 
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		List<WebElement>links=driver.findElements(By.tagName("a"));
+		int linksCount= links.size();
+		
+		System.out.println("The total num of links in NewTour  : " +linksCount);
+		
+		for (int i=0;i<linksCount;i++)
+		{
+			
+			String linkName=links.get(i).getText();
+			System.out.println(i + " " + linkName);
+			links.get(i).click();
+			Thread.sleep(2500);
+		
+			 mShot.multiScreenShot(driver);
+
+			
+			//	File NewTour_Screenshot= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			//FileUtils.copyFile(NewTour_Screenshot,new File("./ScreenShots/NewTour2.png"));
+		 
+			driver.navigate().back();
+			
+			links=driver.findElements(By.tagName("a"));
+			
+			/*
+			 * public static void captureScreenShot(WebDriver ldriver){
+// Take screenshot and store as a file format             
+ File src=((TakesScreenshot)ldriver).getScreenshotAs(OutputType.FILE);           
+try {
+// now copy the  screenshot to desired location using copyFile method
+ 
+FileUtils.copyFile(src, new File("C:/selenium/"+System.currentTimeMillis()+".png"));                              } catch (IOException e)
+ 
+{
+  System.out.println(e.getMessage()) 
+ }
+  }
+ 
+}*/
+			 */
+			
+			
+					
+			
+			
+		}
+		
+		driver.quit();
+		 
+	}
+
+}

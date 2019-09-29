@@ -1,0 +1,13 @@
+package ScreenShot_Package;
+
+import multiScreenShot.MultiScreenShot;
+
+public class Multi_Screenshot {
+
+	public static void main(String[] args)
+	{
+		MultiScreenShot mShot=new MultiScreenShot("./Webdrivers/Screenshots","TestMultiScreenShot");
+		 
+	}
+
+}

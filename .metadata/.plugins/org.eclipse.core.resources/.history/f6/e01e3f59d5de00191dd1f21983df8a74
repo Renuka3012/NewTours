@@ -1,0 +1,28 @@
+package orangehrm_assignments;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Newtours_Register_Assignments {
+
+	public static void main(String[] args)
+	{
+		WebDriver driver=null;
+		String url="http://www.newtours.demoaut.com/";
+		System.setProperty("webdriver.chrome.driver", "./DriverFiles/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get(url);
+		
+		//Maximizing the Browser 
+		
+		driver.manage().window().maximize();
+		
+		//Implicit wait 
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+	}
+
+}

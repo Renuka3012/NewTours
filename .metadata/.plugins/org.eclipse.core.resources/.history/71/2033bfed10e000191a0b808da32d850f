@@ -1,0 +1,59 @@
+package orangehrm_assignments;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class orange1_MultipleData extends Orange_MultipleData{
+	
+	
+	@Test 
+	public void Login() throws IOException
+	{
+		 FileInputStream file = new FileInputStream("C:\\Users\\siva\\Desktop\\Software Testing\\Selenium\\T.Renuka\\RenuProject\\src\\Orange HRM with multiple data.xlsx"); 
+		 // its throws declaration (File Not Found Exception)
+		 
+		 XSSFWorkbook workbook = new XSSFWorkbook(file);
+		 //its again throws declartion (File Not Found Exception) changes to IO Exception
+		 
+		 XSSFSheet sheet = workbook.getSheet("sheet1");
+		 
+		 
+		 int rowCount=sheet.getLastRowNum();
+		 
+			for (int i =1;i<rowCount;i++)
+			{
+				 Row row=sheet.getRow(i);
+				 //Cell Cell=row.getCell(1);
+				 
+				     driver.findElement(By.id("txtUsername")).sendKeys(row.getCell(0).getStringCellValue() );
+					driver.findElement(By.id("txtPassword")).sendKeys(row.getCell(1).getStringCellValue()  );	
+					driver.findElement(By.id("btnLogin")).click();
+			}
+			
+			 String expected_HomePageTitle="OrangeHRM";
+			  System.out.println("The Expected Title is " +expected_HomePageTitle);
+			  String actual_HomePageTitle=driver.getTitle();
+			  System.out.println("The actual Title is " + actual_HomePageTitle);
+			  
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		
+	}
+
+}

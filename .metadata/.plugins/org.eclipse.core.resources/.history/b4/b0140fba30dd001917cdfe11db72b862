@@ -1,0 +1,19 @@
+package orangehrm_assignments;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class dropdown {
+
+	public static void main(String[] args)
+	{
+		WebDriver driver=null;
+		String url="http://demo.guru99.com/test/newtours/register.php";
+		System.setProperty("webdriver.chrome.driver", "./DriverFiles/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get(url);
+		
+		 
+	}
+
+}

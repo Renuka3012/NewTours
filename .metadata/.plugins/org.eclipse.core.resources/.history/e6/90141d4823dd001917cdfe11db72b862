@@ -1,0 +1,23 @@
+package orangehrm_assignments;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class OHRM_Login_WorkSheet {
+
+	public static void main(String[] args) throws IOException
+	{
+		 FileInputStream file = new FileInputStream("./OrangeHRM_Details/OrangeHRM _Login Credentials.xlsx"); 
+		 // its throws declaration (File Not Found Exception)
+		 
+		 XSSFWorkbook workbook = new XSSFWorkbook(file);
+		 //its again throws declartion (File Not Found Exception) changes to IO Exception
+		 
+		 XSSFSheet sheet = workbook.getSheet("OrangeHRM _Login Credentials");S
+	}
+
+}

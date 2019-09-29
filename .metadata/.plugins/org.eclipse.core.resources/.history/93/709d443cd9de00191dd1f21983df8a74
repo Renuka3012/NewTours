@@ -1,0 +1,143 @@
+package orangehrm_assignments;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class Newtours_Register_Assignments {
+
+	
+	
+		WebDriver driver=null;
+		String url="http://www.newtours.demoaut.com/";
+	
+	
+		@BeforeTest
+		public void SetUp()
+		{
+		
+		System.setProperty("webdriver.chrome.driver", "./DriverFiles/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get(url);
+		
+		//Maximizing the Browser 
+		
+		driver.manage().window().maximize();
+		
+		//Implicit wait 
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		}
+		
+		@AfterTest
+		public void TearDown()
+		{
+			driver.quit();
+		}
+		
+		@Test
+		public void Register() throws IOException
+		{
+			/*FileInputStream file = new FileInputStream("C:\\Users\\siva\\Desktop\\Software Testing\\Selenium\\T.Renuka\\RenuProject\\src\\NewTours_Details\\NewTours_REGISTERForm.xlsx");
+			XSSFWorkbook workbook = new XSSFWorkbook(file);
+			XSSFSheet sheet = workbook.getSheet("sheet1");
+			
+		int rowCount=sheet.getLastRowNum();
+		
+		for (int i =1;i<rowCount;i++)
+		{
+			 Row row=sheet.getRow(i);
+			 Cell Cell=row.getCell(1);
+		String	data = Cell.getStringCellValue();
+			 
+			  
+		}*/
+			 
+			
+			//	<a href="mercuryregister.php">REGISTER</a>
+			
+			
+			driver.findElement(By.linkText("REGISTER")).click();
+			
+			
+			//<input maxlength="60" name="firstName" size="20">
+			WebElement FirstName=driver.findElement(By.name("firstName"));
+			
+			Actions action = new Actions(driver);
+			FirstName.clear();
+			FirstName.sendKeys("Shiva");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("Tirumalasetty");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("8465922257");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("shiva.t@gmail.com");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("3-4-567");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("Krishna Nagar");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("Hyderabad");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("Telangana");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("500045");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("India");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("Shiva123");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("Shiva123");
+			action.sendKeys(Keys.TAB);
+			action.sendKeys("Shiva123");
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+			
+			 
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+	
+
+}

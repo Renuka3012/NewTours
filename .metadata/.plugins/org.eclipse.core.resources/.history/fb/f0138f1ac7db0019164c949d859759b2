@@ -1,0 +1,51 @@
+package ScreenShot_Package;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import multiScreenShot.MultiScreenShot;
+
+public class Multi_Screenshot {
+
+	public static void main(String[] args) throws IOException
+	{
+		MultiScreenShot mShot=new MultiScreenShot("./Webdrivers/Screenshots","TestMultiScreenShot");
+		
+		 MultiScreenShot mShot=new MultiScreenShot("C:\\xxxx\\Desktop\\New\\","TestMultiScreenShot");
+	        WebDriver driver =new FirefoxDriver();
+	        driver.get("https://google.com");
+
+	        //maximze the window
+	        driver.manage().window().maximize();
+
+	        //take full screenshot using MultiScreenShot class
+	        mShot.multiScreenShot(driver);
+
+	        //take element screenshot using MultiScreenShot class
+	        mShot.elementScreenShot(driver, driver.findElement(By.id("gbqfq")));
+
+	        //navigate to yahoo
+	        driver.navigate().to("https://yahoo.in");
+
+	        //take element screenshot using MultiScreenShot class
+	        mShot.elementScreenShot(driver, driver.findElement(By.id("search-submit")));
+
+	        //take full screenshot using MultiScreenShot class
+	        mShot.multiScreenShot(driver);
+
+	        //minimize the window using MultiScreenShot class
+	        mShot.minimize();
+
+	        driver.quit();
+
+	    }
+
+	}
+		 
+	 
+	}
+
+}
